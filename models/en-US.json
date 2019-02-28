@@ -1,0 +1,198 @@
+{
+	"invocation": "my service now",
+	"alexa": {
+		"interactionModel": {
+			"prompts": [
+				{
+					"id": "Confirm.Intent.436219344342",
+					"variations": [
+						{
+							"type": "PlainText",
+							"value": "what is your {pin} ?"
+						}
+					]
+				},
+				{
+					"id": "Elicit.Slot.513310193080.165405941392",
+					"variations": [
+						{
+							"type": "PlainText",
+							"value": "what is your {pin}"
+						}
+					]
+				},
+				{
+					"id": "Elicit.Slot.424165923854.768430297734",
+					"variations": [
+						{
+							"type": "PlainText",
+							"value": "What is the task Name"
+						}
+					]
+				}
+			],
+			"dialog": {
+				"intents": [
+					{
+						"name": "Login",
+						"confirmationRequired": true,
+						"prompts": {
+							"confirmation": "Confirm.Intent.436219344342"
+						},
+						"slots": [
+							{
+								"name": "pin",
+								"type": "AMAZON.NUMBER",
+								"elicitationRequired": true,
+								"confirmationRequired": false,
+								"prompts": {
+									"elicitation": "Elicit.Slot.513310193080.165405941392"
+								}
+							}
+						]
+					},
+					{
+						"name": "createNewTask",
+						"confirmationRequired": false,
+						"prompts": {},
+						"slots": [
+							{
+								"name": "task",
+								"type": "task",
+								"elicitationRequired": false,
+								"confirmationRequired": false,
+								"prompts": {}
+							},
+							{
+								"name": "TaskName",
+								"type": "AMAZON.Genre",
+								"elicitationRequired": true,
+								"confirmationRequired": false,
+								"prompts": {
+									"elicitation": "Elicit.Slot.424165923854.768430297734"
+								}
+							}
+						]
+					}
+				],
+				"delegationStrategy": "ALWAYS"
+			},
+			"languageModel": {
+				"intents": [
+					{
+						"name": "AMAZON.CancelIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.HelpIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.StopIntent",
+						"samples": []
+					},
+					{
+						"name": "AMAZON.NavigateHomeIntent",
+						"samples": []
+					}
+				]
+			}
+		}
+	},
+	"intents": [
+		{
+			"name": "Login",
+			"phrases": [
+				"{pin}",
+				"my pin is {pin}",
+				"login",
+				"Authenticate"
+			],
+			"inputs": [
+				{
+					"name": "pin",
+					"type": {
+						"alexa": "AMAZON.NUMBER"
+					},
+					"alexa": {
+						"samples": [
+							"{pin}"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "getSampleData",
+			"phrases": [
+				"get Sample Data"
+			],
+			"inputs": []
+		},
+		{
+			"name": "getTableData",
+			"phrases": [
+				"getTableData"
+			],
+			"inputs": []
+		},
+		{
+			"name": "getSysId",
+			"phrases": [
+				"getSysId"
+			],
+			"inputs": []
+		},
+		{
+			"name": "createNewTask",
+			"phrases": [
+				"create new {task}"
+			],
+			"inputs": [
+				{
+					"name": "task",
+					"type": "task"
+				},
+				{
+					"name": "TaskName",
+					"type": {
+						"alexa": "AMAZON.Genre"
+					},
+					"alexa": {
+						"samples": [
+							"{TaskName}"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "UpdateTask",
+			"phrases": [
+				"UpdateTask"
+			],
+			"inputs": []
+		},
+		{
+			"name": "DeleteTask",
+			"phrases": [
+				"DeleteTask"
+			],
+			"inputs": []
+		}
+	],
+	"inputTypes": [
+		{
+			"name": "task",
+			"values": [
+				{
+					"value": "task",
+					"synonyms": [
+						"request",
+						"issue"
+					]
+				}
+			]
+		}
+	]
+}
