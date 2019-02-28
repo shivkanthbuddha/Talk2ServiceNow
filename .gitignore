@@ -4,3 +4,4 @@ bundle/
 bundle.zip
 .env
 src/info.properties
+package-lock.json

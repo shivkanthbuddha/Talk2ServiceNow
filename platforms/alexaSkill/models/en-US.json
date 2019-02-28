@@ -4,7 +4,7 @@
       "invocationName": "my service now",
       "intents": [
         {
-          "name": "Login",
+          "name": "LoginIntent",
           "slots": [
             {
               "name": "pin",
@@ -59,21 +59,29 @@
           ]
         },
         {
-          "name": "createNewTask",
+          "name": "NewTaskIntent",
           "slots": [
             {
               "name": "task",
               "type": "task"
             },
             {
-              "name": "TaskName",
+              "name": "taskName",
               "type": "AMAZON.Genre",
               "samples": [
-                "{TaskName}"
+                "{taskName}"
+              ]
+            },
+            {
+              "name": "urgency",
+              "type": "AMAZON.NUMBER",
+              "samples": [
+                "{urgency}"
               ]
             }
           ],
           "samples": [
+            "new {task}",
             "create new {task}"
           ]
         },
@@ -112,7 +120,7 @@
     "dialog": {
       "intents": [
         {
-          "name": "Login",
+          "name": "LoginIntent",
           "confirmationRequired": true,
           "prompts": {
             "confirmation": "Confirm.Intent.436219344342"
@@ -130,7 +138,7 @@
           ]
         },
         {
-          "name": "createNewTask",
+          "name": "NewTaskIntent",
           "confirmationRequired": false,
           "prompts": {},
           "slots": [
@@ -142,13 +150,33 @@
               "prompts": {}
             },
             {
-              "name": "TaskName",
+              "name": "taskName",
               "type": "AMAZON.Genre",
               "elicitationRequired": true,
               "confirmationRequired": false,
               "prompts": {
                 "elicitation": "Elicit.Slot.424165923854.768430297734"
               }
+            },
+            {
+              "name": "urgency",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1395049268872.660992137882"
+              },
+              "validations": [
+                {
+                  "type": "isInSet",
+                  "prompt": "Slot.Validation.1395049268872.660992137882.1177493095416",
+                  "values": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -180,6 +208,24 @@
           {
             "type": "PlainText",
             "value": "What is the task Name"
+          }
+        ]
+      },
+      {
+        "id": "Slot.Validation.1395049268872.660992137882.1177493095416",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Urgency can only be one two or three"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1395049268872.660992137882",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please let me know the urgency of the issue , which can be one two or three"
           }
         ]
       }
