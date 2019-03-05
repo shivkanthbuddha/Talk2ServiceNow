@@ -1,234 +1,235 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "my service now",
-      "intents": [
-        {
-          "name": "LoginIntent",
-          "slots": [
-            {
-              "name": "pin",
-              "type": "AMAZON.NUMBER",
-              "samples": [
-                "{pin}"
-              ]
-            }
-          ],
-          "samples": [
-            "{pin}",
-            "my pin is {pin}",
-            "login",
-            "Authenticate"
-          ]
-        },
-        {
-          "name": "getSampleData",
-          "slots": [],
-          "samples": [
-            "get Sample Data"
-          ]
-        },
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        },
-        {
-          "name": "getTableData",
-          "slots": [],
-          "samples": [
-            "getTableData"
-          ]
-        },
-        {
-          "name": "getSysId",
-          "slots": [],
-          "samples": [
-            "getSysId"
-          ]
-        },
-        {
-          "name": "NewTaskIntent",
-          "slots": [
-            {
-              "name": "task",
-              "type": "task"
-            },
-            {
-              "name": "taskName",
-              "type": "AMAZON.Genre",
-              "samples": [
-                "{taskName}"
-              ]
-            },
-            {
-              "name": "urgency",
-              "type": "AMAZON.NUMBER",
-              "samples": [
-                "{urgency}"
-              ]
-            }
-          ],
-          "samples": [
-            "new {task}",
-            "create new {task}"
-          ]
-        },
-        {
-          "name": "UpdateTask",
-          "slots": [],
-          "samples": [
-            "UpdateTask"
-          ]
-        },
-        {
-          "name": "DeleteTask",
-          "slots": [],
-          "samples": [
-            "DeleteTask"
-          ]
-        }
-      ],
-      "types": [
-        {
-          "values": [
-            {
-              "name": {
-                "value": "task",
-                "synonyms": [
-                  "request",
-                  "issue"
-                ]
-              }
-            }
-          ],
-          "name": "task"
-        }
-      ]
-    },
-    "dialog": {
-      "intents": [
-        {
-          "name": "LoginIntent",
-          "confirmationRequired": true,
-          "prompts": {
-            "confirmation": "Confirm.Intent.436219344342"
-          },
-          "slots": [
-            {
-              "name": "pin",
-              "type": "AMAZON.NUMBER",
-              "elicitationRequired": true,
-              "confirmationRequired": false,
-              "prompts": {
-                "elicitation": "Elicit.Slot.513310193080.165405941392"
-              }
-            }
-          ]
-        },
-        {
-          "name": "NewTaskIntent",
-          "confirmationRequired": false,
-          "prompts": {},
-          "slots": [
-            {
-              "name": "task",
-              "type": "task",
-              "elicitationRequired": false,
-              "confirmationRequired": false,
-              "prompts": {}
-            },
-            {
-              "name": "taskName",
-              "type": "AMAZON.Genre",
-              "elicitationRequired": true,
-              "confirmationRequired": false,
-              "prompts": {
-                "elicitation": "Elicit.Slot.424165923854.768430297734"
-              }
-            },
-            {
-              "name": "urgency",
-              "type": "AMAZON.NUMBER",
-              "elicitationRequired": true,
-              "confirmationRequired": false,
-              "prompts": {
-                "elicitation": "Elicit.Slot.1395049268872.660992137882"
-              },
-              "validations": [
-                {
-                  "type": "isInSet",
-                  "prompt": "Slot.Validation.1395049268872.660992137882.1177493095416",
-                  "values": [
-                    "1",
-                    "2",
-                    "3"
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "delegationStrategy": "ALWAYS"
-    },
-    "prompts": [
-      {
-        "id": "Confirm.Intent.436219344342",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "what is your {pin} ?"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.513310193080.165405941392",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "what is your {pin}"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.424165923854.768430297734",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "What is the task Name"
-          }
-        ]
-      },
-      {
-        "id": "Slot.Validation.1395049268872.660992137882.1177493095416",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Urgency can only be one two or three"
-          }
-        ]
-      },
-      {
-        "id": "Elicit.Slot.1395049268872.660992137882",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Please let me know the urgency of the issue , which can be one two or three"
-          }
-        ]
-      }
-    ]
-  }
+	"interactionModel": {
+		"languageModel": {
+			"invocationName": "my service now",
+			"types": [
+				{
+					"name": "task",
+					"values": [
+						{
+							"id": null,
+							"name": {
+								"value": "task",
+								"synonyms": [
+									"request",
+									"issue"
+								]
+							}
+						}
+					]
+				}
+			],
+			"intents": [
+				{
+					"name": "LoginIntent",
+					"samples": [
+						"{pin}",
+						"my pin is {pin}",
+						"login",
+						"Authenticate"
+					],
+					"slots": [
+						{
+							"name": "pin",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"{pin}"
+							]
+						}
+					]
+				},
+				{
+					"name": "getSampleData",
+					"samples": [
+						"get Sample Data"
+					],
+					"slots": []
+				},
+				{
+					"name": "getTableData",
+					"samples": [
+						"getTableData"
+					],
+					"slots": []
+				},
+				{
+					"name": "getSysId",
+					"samples": [
+						"getSysId"
+					],
+					"slots": []
+				},
+				{
+					"name": "NewTaskIntent",
+					"samples": [
+						"new {task}",
+						"create new {task}"
+					],
+					"slots": [
+						{
+							"name": "task",
+							"type": "task"
+						},
+						{
+							"name": "taskName",
+							"type": "AMAZON.Genre",
+							"samples": [
+								"{taskName}"
+							]
+						},
+						{
+							"name": "urgency",
+							"type": "AMAZON.NUMBER",
+							"samples": [
+								"{urgency}"
+							]
+						}
+					]
+				},
+				{
+					"name": "UpdateTask",
+					"samples": [
+						"UpdateTask"
+					],
+					"slots": []
+				},
+				{
+					"name": "DeleteTask",
+					"samples": [
+						"DeleteTask"
+					],
+					"slots": []
+				},
+				{
+					"name": "AMAZON.CancelIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.HelpIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.StopIntent",
+					"samples": []
+				},
+				{
+					"name": "AMAZON.NavigateHomeIntent",
+					"samples": []
+				}
+			]
+		},
+		"prompts": [
+			{
+				"id": "Confirm.Intent.436219344342",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "what is your {pin} ?"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.513310193080.165405941392",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "what is your {pin}"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.424165923854.768430297734",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "What is the task Name"
+					}
+				]
+			},
+			{
+				"id": "Slot.Validation.1395049268872.660992137882.1177493095416",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Urgency can only be one two or three"
+					}
+				]
+			},
+			{
+				"id": "Elicit.Slot.1395049268872.660992137882",
+				"variations": [
+					{
+						"type": "PlainText",
+						"value": "Please let me know the urgency of the issue , which can be one two or three"
+					}
+				]
+			}
+		],
+		"dialog": {
+			"intents": [
+				{
+					"name": "LoginIntent",
+					"confirmationRequired": true,
+					"prompts": {
+						"confirmation": "Confirm.Intent.436219344342"
+					},
+					"slots": [
+						{
+							"name": "pin",
+							"type": "AMAZON.NUMBER",
+							"elicitationRequired": true,
+							"confirmationRequired": false,
+							"prompts": {
+								"elicitation": "Elicit.Slot.513310193080.165405941392"
+							}
+						}
+					]
+				},
+				{
+					"name": "NewTaskIntent",
+					"confirmationRequired": false,
+					"prompts": {},
+					"slots": [
+						{
+							"name": "task",
+							"type": "task",
+							"elicitationRequired": false,
+							"confirmationRequired": false,
+							"prompts": {}
+						},
+						{
+							"name": "taskName",
+							"type": "AMAZON.Genre",
+							"elicitationRequired": true,
+							"confirmationRequired": false,
+							"prompts": {
+								"elicitation": "Elicit.Slot.424165923854.768430297734"
+							}
+						},
+						{
+							"name": "urgency",
+							"type": "AMAZON.NUMBER",
+							"elicitationRequired": true,
+							"confirmationRequired": false,
+							"prompts": {
+								"elicitation": "Elicit.Slot.1395049268872.660992137882"
+							},
+							"validations": [
+								{
+									"type": "isInSet",
+									"prompt": "Slot.Validation.1395049268872.660992137882.1177493095416",
+									"values": [
+										"1",
+										"2",
+										"3"
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"delegationStrategy": "ALWAYS"
+		}
+	}
 }
