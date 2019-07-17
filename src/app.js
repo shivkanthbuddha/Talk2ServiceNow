@@ -26,7 +26,7 @@ app.use(
     new Alexa(),
     new GoogleAssistant(),
     new JovoDebugger(),
-    new FileDb()    
+  //  new FileDb()    
 );
 
 const ServiceNow=new sn(properties.get('_INSTANCE'),properties.get('_USERID') ,properties.get('_PASSWORD') );
@@ -45,7 +45,7 @@ app.setHandler({
        //  return this.toIntent('Authenticate');
     },
 
-    Login() {
+    LoginIntent() {
         this.ask('Login Successful, What do you want to do today ,ask for help to listen to all options ','What next');  
  
     },
